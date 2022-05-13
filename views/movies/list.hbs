@@ -1,0 +1,8 @@
+<h1>Soy el listado de películas</h1>
+
+<div>
+    {{#each listMovies}}
+        <img src="{{this.cover}}">
+        <a href="#"><h5>{{this.title}}</h5></a>
+    {{/each}}
+</div>
