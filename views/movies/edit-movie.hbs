@@ -1,0 +1,51 @@
+<h1>Editar Película</h1>
+
+<form action="/movies/{{editMovie._id}}/edit" method="POST" enctype="multipart/form-data">
+
+<label for="title">Title: </label>
+<input type="text" name="title" value="{{editMovie.title}}">
+
+<br>
+<label for="director">Director: </label>
+<input type="text" name="director" value="{{editMovie.director}}">
+
+<br>
+<label for="cast"> Reparto: </label>
+{{!-- <select name="cast" multiple="true">
+    {{#each allCast}}
+    <option value="{{this.id}}">{{this.name}}</option>
+
+    {{/each}}
+</select> --}}
+<input type="text" name="cast" value="{{editMovie.cast}}">
+
+<br>
+<label for="plot">Argumento: </label>
+<textarea name="plot">{{editMovie.plot}}</textarea>
+
+<br>
+<label for="year">Año: </label>
+<input type="number" name="year" value="{{editMovie.year}}">
+
+<br>
+<label for="cover">Carátula: 
+    <input type="file" name="cover">
+    <input type="text" name="existingImage" hidden value="{{editMovie.cover}}">
+</label>
+
+
+    
+
+
+<br>
+<button type="submit">Actualizar</button>
+
+</form>
+
+<form action="/movies/{{editMovie._id}}/delete" method="POST">
+<button>Eliminar</button>
+</form>
+
+
+
+    

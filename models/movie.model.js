@@ -17,8 +17,14 @@ const movieSchema = new Schema({
     year: {
         type: Number,
     },
-    owner: [String],
-    favorites: [String],
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
+    favorites: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
+    }
 });
 
 const MovieModel = model("Movie", movieSchema);
