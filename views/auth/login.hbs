@@ -1,0 +1,21 @@
+<h1>Soy la página de login</h1>
+
+<form action="/auth/login" method="POST">
+
+  <label for="email">Email:</label>
+  <input type="text" name="email">
+
+  <br>
+
+  <label for="password">Contraseña:</label>
+  <input type="password" name="password">
+
+  <br>
+
+  <h5 style="color: red">{{errorMessage}}</h5>
+
+  <br>
+
+  <button>Acceder</button>
+
+</form>
