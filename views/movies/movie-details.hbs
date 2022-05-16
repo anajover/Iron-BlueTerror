@@ -1,0 +1,24 @@
+<h1>Detalles de la Película</h1>
+
+
+<img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px">
+<p>{{movieDetails.title}}</p>
+<br>
+<p>Director: {{movieDetails.director}}</p>
+<br>
+<p>Reparto:</p>
+{{#each movieDetails.cast}}
+<ul>{{this}}</ul>
+{{/each}}
+<br>
+<p>Argumento:</p>
+<ul>{{movieDetails.plot}}</ul>
+<br>
+<p>Año: {{movieDetails.year}}</p>
+<br>
+<button><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
+
+<form action="/movies/{{movieDetails._id}}/delete" method="POST">
+<button>Borrar</button>
+</form>
+

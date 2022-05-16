@@ -2,7 +2,7 @@
 
 <div>
     {{#each listMovies}}
-        <img src="{{this.cover}}">
-        <a href="#"><h5>{{this.title}}</h5></a>
+        <img src="{{this.cover}}" style="height: 200px;">
+        <a href="/movies/{{this._id}}"><h5>{{this.title}}</h5></a>
     {{/each}}
 </div>
