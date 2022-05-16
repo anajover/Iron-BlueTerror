@@ -43,6 +43,7 @@ router.get("/movies/create", (req, res, next) => {
 // POST create movie
 router.post("/movies/create", fileUploader.single("cover"), (req, res, next) => {
     const { title, director, cast, plot, year} = req.body
+    const ownerId = req.session.user._id
     
     MovieModel.create({
         cover: req.file.path,
@@ -50,7 +51,8 @@ router.post("/movies/create", fileUploader.single("cover"), (req, res, next) => 
         director,
         cast,
         plot,
-        year
+        year,
+        owner : ownerId
     })
     .then((movie) => {
         res.redirect("/movies/list");
