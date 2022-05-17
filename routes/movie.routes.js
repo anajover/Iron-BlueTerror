@@ -4,6 +4,7 @@ const router = express.Router();
 const MovieModel = require("../models/Movie.model.js");
 const UserModel = require("../models/User.model.js");
 const fileUploader = require("../middlewares/uploader.js");
+const isLoggedIn = require("../middlewares/isLoggedIn.js");
 
 
 // GET home page
@@ -31,7 +32,7 @@ router.get("/movies/list", (req, res, next) => {
 })
 
 // GET create movie
-router.get("/movies/create", (req, res, next) => {
+router.get("/movies/create", isLoggedIn, (req, res, next) => {
     res.render("movies/new-movie.hbs")
 })
 
@@ -41,7 +42,7 @@ router.get("/movies/create", (req, res, next) => {
 // })
 
 // POST create movie
-router.post("/movies/create", fileUploader.single("cover"), (req, res, next) => {
+router.post("/movies/create", isLoggedIn, fileUploader.single("cover"), (req, res, next) => {
     const { title, director, cast, plot, year} = req.body
     const ownerId = req.session.user._id
     
@@ -80,8 +81,9 @@ router.get("/movies/:id/edit", (req, res, next) =>{
 
 // POST edit movie
 router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) => {
-    const {cover, title, director, cast, plot, year} = req.body;
+    const {cover, title, director, cast, plot, year, owner} = req.body;
     const {id} = req.params;
+    const ownerId = req.session.user._id;
 
     MovieModel.findByIdAndUpdate(id, {
         cover: req.file.path,
@@ -89,7 +91,8 @@ router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) =>
         director,
         cast,
         plot,
-        year
+        year,
+        owner: ownerId
     })
     .then((movie) => {
         res.redirect(`/movies/${movie._id}`);

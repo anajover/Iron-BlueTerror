@@ -3,11 +3,15 @@
 <form action="/profile/edit" method="POST" enctype="multipart/form-data">
 
 <label for="username">Username: </label>
-<input type="text" name="title" value="{{foundUser.username}}">
+<input type="text" name="username" value="{{foundUser.username}}">
 
 <br>
 <label for="email">Email: </label>
 <input type="email" name="email" value="{{foundUser.email}}">
+
+<br>
+<label for="name">Nombre: </label>
+<input type="text" name="name" value="{{foundUser.name}}">
 
 <br>
 <label for="city">Ciudad: </label>
@@ -23,15 +27,14 @@
 
 <br>
 <label for="image">Imagen de perfil: </label>
-<input type="file" name="image">
-<input type="text" name="existingImage" hidden value="{{foundUser.image}}">
+<input type="file" name="image" value="{{foundUser.image}}">
+
 
 <br>
 <button type="submit">Actualizar Datos</button>
 
 </form>
 
-<br>
-<button><a href="/movies/create/">Crear película</button>
+
 
 

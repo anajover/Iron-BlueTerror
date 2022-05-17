@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model.js");
+fileUploader = require("../middlewares/uploader.js")
 
 
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
@@ -27,7 +28,7 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 //GET PARA EDITAR PERFIL//
 
 
-router.get("/edit", async (req, res, next) => {
+router.get("/edit", isLoggedIn, async (req, res, next) => {
     
 
 try {
@@ -59,18 +60,21 @@ try {
 // });
 
 // POST edicion de Profile
-router.post("/edit", (req, res, next) => {
-    const {image, username, email, name, birthYear, aboutMe} = req.body;
-    const {id} =req.session.user._id;
+router.post("/edit", isLoggedIn, fileUploader.single("image"),(req, res, next) => {
+    console.log("Hola, esto es:" + req.file)
+    const {image, username, email, name, city, birthYear, aboutMe} = req.body;
+    const id =req.session.user._id;
+    
     User.findByIdAndUpdate(id, {
         image: req.file.path,
         username,
         email,
         name,
+        city,
         birthYear,
         aboutMe
     }) .then((profile) => {
-        res.redirect("/profile")
+        res.redirect("/profile");
     }) .catch((err) => {
         next(err)
     })
