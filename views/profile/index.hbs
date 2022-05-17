@@ -1,1 +1,21 @@
 <h1>Perfil de usuario</h1>
+
+{{!-- <img src = "{{profile.image}}" alt = "imagen de perfil" style="height:300px">
+<p>Usuario: {{userProfile.username}}</p>
+<p>Email: {{userProfile.email}}</p>
+<p>Nombre: {{profile.name}}</p>
+<p>Ciudad: {{profile.city}}</p>
+<p>Fecha de nacimiento: {{profile.birthYear}}</p>
+<p>Acerca de mí: {{profile.aboutMe}}</p> --}}
+
+<img src="{{foundUser.image}}" alt = "Imagen de perfil" style="height:300px">
+<p>Usuario: {{foundUser.username}}</p>
+<p>Email: {{foundUser.email}}</p>
+<p>Nombre: {{foundUser.name}}</p>
+<p>Ciudad: {{foundUser.city}}</p>
+<p>Fecha de nacimiento: {{foundUser.birthYear}}</p>
+<p>Acerca de mi: {{foundUser.aboutMe}}</p>
+
+{{!-- MODIFICAR --}}
+
+<button><a href="/profile/edit">Editar</a></button>

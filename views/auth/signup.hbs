@@ -1,27 +1,27 @@
-<h1>Registra tu usuario</h1>
+
+<h1>Soy la página de registro</h1>
 
 <form action="/auth/signup" method="POST">
 
-<label form="username">Username: </label>
-<input type="text" name="username">
+  <label for="username">Usuario:</label>
+  <input type="text" name="username" required="true">
 
-<br>
+  <br>
 
-<label form="email">E-mail: </label>
-<input type="email" name="email">
+  <label for="email">Email:</label>
+  <input type="email" name="email">
 
-<br>
+  <br>
 
-<label for="password">Password: </label>
-<input type="password" name="password">
+  <label for="password">Contraseña:</label>
+  <input type="password" name="password">
+s
+  <br>
 
-<br>
+  <h5 style="color: red">{{errorMessage}}</h5>
+  
+  <br>
 
-<h4>{{errorMessage}}</h4>
-
-<br>
-
-<button>Registrarse</button>
-
+  <button>Registrar</button>
 
 </form>
