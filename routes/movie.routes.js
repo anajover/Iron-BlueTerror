@@ -67,7 +67,7 @@ router.post("/movies/create", fileUploader.single("cover"), (req, res, next) => 
 router.get("/movies/:id/edit", (req, res, next) =>{
     const {id} = req.params;
 
-    MovieModel.findById(id)
+    MovieModel.findById(id).populate("user")
     .then((movie) => {
         res.render("movies/edit-movie.hbs", {
             editMovie: movie
@@ -75,7 +75,7 @@ router.get("/movies/:id/edit", (req, res, next) =>{
     })
     .catch((err) => {
         next(err)
-    })
+    }) 
 });
 
 // POST edit movie
