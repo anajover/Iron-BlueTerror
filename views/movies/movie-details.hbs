@@ -16,9 +16,18 @@
 <br>
 <p>Año: {{movieDetails.year}}</p>
 <br>
+{{movieDetails.owner}}
+
+
+
+
+{{#if editMovieCreated}}
 <button><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
 
 <form action="/movies/{{movieDetails._id}}/delete" method="POST">
 <button>Borrar</button>
+{{else}}
+{{ownerMessage}}
+{{/if}}
 </form>
 

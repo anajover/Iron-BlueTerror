@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const MovieModel = require("../models/Movie.model.js");
-const UserModel = require("../models/User.model.js");
+const User = require("../models/User.model.js");
 const fileUploader = require("../middlewares/uploader.js");
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
+// const res = require("express/lib/response");
 
 
 // GET home page
@@ -67,9 +68,11 @@ router.post("/movies/create", isLoggedIn, fileUploader.single("cover"), (req, re
 // GET edit movie
 router.get("/movies/:id/edit", (req, res, next) =>{
     const {id} = req.params;
+    
 
     MovieModel.findById(id)
     .then((movie) => {
+      
         res.render("movies/edit-movie.hbs", {
             editMovie: movie
         })
@@ -84,6 +87,7 @@ router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) =>
     const {cover, title, director, cast, plot, year, owner} = req.body;
     const {id} = req.params;
     const ownerId = req.session.user._id;
+    
 
     MovieModel.findByIdAndUpdate(id, {
         cover: req.file.path,
@@ -105,16 +109,160 @@ router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) =>
 // GET movies details
 router.get("/movies/:movieId", (req, res, next) => {
     const {movieId} = req.params
+    // const userLoggedId = req.session.user._id;
+    // const {owner} = req.body
     MovieModel.findById(movieId)
+
+       
+    // const foundMovie = MovieModel.findById(movieId)
+    
+    // const foundUser = MovieModel.find(owner).populate("User")
+    // const foundUsername = foundMovie.username
+    // foundOwner = User.findById()  
+    
+    
     .then((movie) => {
+        const foundMovieByOwner = movie.owner.toString();
+        console.log(foundMovieByOwner);
+        const foundUserLoggedById = req.session.user._id;
+        console.log(foundUserLoggedById);
+
+        if (foundMovieByOwner === foundUserLoggedById){
+            req.app.locals.editMovieCreated = true;
+            console.log(req.app.locals.editMovieCreated)
+        } else {
+            req.app.locals.editMovieCreated = false;
+            console.log(req.app.locals.editMovieCreated)
+            // res.render("movies/movie-details.hbs", {
+            //     ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
+            // })
+            
+        }
+        
+        
         res.render("movies/movie-details.hbs", {
-            movieDetails: movie
+            movieDetails: movie,
+            foundMovieByeOwner: movie.owner.toString(),
+            foundUserLoggedById: req.session.user._id
         })
     })
     .catch((err) => {
         next(err)
     })
 })
+
+// // POST movie details
+// router.post("/movies/:movieId", async (req, res, next) => {
+//     const {movieId} = req.params
+//     const foundMovieByOwner = movie.owner.toString();
+//     // console.log(foundMovieByeOwner);
+//     const foundUserLoggedById = req.session.user._id;
+//     // console.log(foundUserLoggedById);
+
+//     try{
+
+//         if (foundMovieByOwner === foundUserLoggedById) {
+//             req.app.locals.editMovieCreated = true;
+//         } else{
+//             req.app.locals.editMovieCreated = false
+//             res.render("movies/movie-details.hbs", {
+//                 ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
+//             })
+//             return;
+//         }
+//     }catch(err) {
+//         next(err)
+//     }
+// })
+
+// GET list of movies created by the user
+// router.get("/movies/createdMovies", (req, res, next) => {
+//     const{id} = req.params;
+
+//     MovieModel.findById(id)
+//     .then((response) => {
+//         // console.log(response)
+//         res.render("profile/ownerlist.hbs", {
+//             movieList: response
+//         })
+//     }).catch((err) =>{
+//         next(err)
+//     })
+// })
+
+
+
+// router.get("/movies/created", (req, res, next) => {
+//     const {id} = req.params;
+//     // const {owner} = req.body;
+//     // const foundOwnerId = res.session.user._id;
+
+
+//     MovieModel.findById(id)
+//     .then((response) => {
+//         console.log(response)
+//         res.render("profile/ownerlist.hbs", {
+//             movieList: response
+//         })
+//     }).catch((err) => {
+//         next(err)
+//     })
+    
+// })
+
+
+// router.get("/movies/created", (req, res, next) => {
+//     const {owner} = req.body;
+//     const {id} = req.params;
+
+//     console.log(owner);
+//     MovieModel.findById(id)
+// .then((response) => {
+//     res.render("profile/ownerlist.hbs", {
+//         movieList: response
+//     })
+// } ).catch((err) => {
+//     next(err)
+// })
+// })
+// router.get("/movies/created", (req, res, next) => {
+//     const userLoggedId = req.session.user._id
+//     const {id} = req.params
+
+//     const foundMovie = MovieModel.findById()
+// })
+
+// // GET Lista de peliculas creadas por el usuario
+// router.get("/movies/created", (req, res, next) => {
+    
+//     const userLoggedId = parseInt(req.session.user._id);
+    
+//     // const {owner} = req.body
+    
+//     const movieCreated = MovieModel.find({owner: userLoggedId})
+//     .then((movie) => {
+//         console.log(userLoggedId)
+//         console.log(movieCreated)
+//         res.render("movies/ownerlist.hbs", {
+//             movieByUser: movie
+//         })
+//     }).catch((err) => {
+//         next(err)
+//     })
+//     });
+
+// router.get("/movies/created", async (req, res, next) => {
+//     const {_id} = req.session.user
+//     try{
+//         const movieCreatedByUser = await MovieModel.find({owner: 
+//         _id})
+//         console.log(movieCreatedByUser)
+//         res.render("profile/ownerlist.hbs", {
+//             movieCreatedByUser
+//         })
+//     } catch (err) {next(err)}
+// })
+
 
 // POST borrar una pelicula
 router.post("/movies/:id/delete", async (req, res, next) => {
@@ -133,6 +281,8 @@ router.post("/movies/:id/delete", async (req, res, next) => {
     //     next(err)
     // })
 })
+
+//POST coincidan usuario y pelicula creada
 
 
 module.exports = router;

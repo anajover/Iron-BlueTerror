@@ -44,7 +44,17 @@
          <li><a href="/movies">Películas</a></li>
          <li><a href="/movies/list">Listado</a></li>
          <li><a href="/">About Us</a></li>
-         <li><a href="/">Cerrar Sesión</a></li>
+
+         {{#if userIsActive}}
+         <li><a href="/profile">Perfil</a></li>
+         <form action="/auth/logout" method="POST">
+         <button>Cerrar Sesión</button>
+         </form>
+         {{else}}
+         <li><a href="/auth/signup">Registrarse</a></li>
+         <li><a href="/auth/login">Iniciar Sesión</a></li>
+         {{/if}}
+         
                  
        </div>
      </ul>
