@@ -20,11 +20,8 @@ const movieSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
-    },
-    favorites: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
     }
+   
 });
 
 const MovieModel = model("Movie", movieSchema);

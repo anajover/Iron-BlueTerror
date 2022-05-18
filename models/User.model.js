@@ -24,7 +24,11 @@ const userSchema = new Schema({
   },
   aboutMe: {
     type: String
-  }
+  },
+  favorites: [{
+    type: Schema.Types.ObjectId,
+    ref: "Movie"
+  }]
 });
 
 const User = model("User", userSchema);
