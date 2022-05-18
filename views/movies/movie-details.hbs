@@ -2,6 +2,11 @@
 
 
 <img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px">
+{{#if userIsActive}}
+<br>
+<button>Favoritos</button>
+{{/if}}
+<br>
 <p>{{movieDetails.title}}</p>
 <br>
 <p>Director: {{movieDetails.director}}</p>
