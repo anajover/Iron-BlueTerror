@@ -1,8 +1,82 @@
 <h1>Soy el listado de películas</h1>
 
-<div>
+{{!-- <div>
     {{#each listMovies}}
         <img src="{{this.cover}}" style="height: 200px;">
         <a href="/movies/{{this._id}}"><h5>{{this.title}}</h5></a>
     {{/each}}
+</div> --}}
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-5 g-10">
+
+     {{#each listMovies}}
+
+  <div class="col">
+    <div class="cardlist">
+      <img src="{{this.cover}}" class="card-img-top" style="width:200px;" alt="...">
+      
+      <div class="card-body">
+      <a href="/movies/{{this._id}}"><h5>{{this.title}}"</h5></a>
+      </div>
+    </div>
+  </div>
+ 
+
+
+ <div class="col">
+    <div class="cardlist">
+      <img src="{{this.cover}}" class="card-img-top" style="width:200px;" alt="...">
+      
+      <div class="card-body">
+      <a href="/movies/{{this._id}}"><h5>{{this.title}}"</h5></a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col">
+    <div class="cardlist">
+      <img src="{{this.cover}}" class="card-img-top" style="width:200px;" alt="...">
+      
+      <div class="card-body">
+      <a href="/movies/{{this._id}}"><h5>{{this.title}}"</h5></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col">
+    <div class="cardlist">
+      <img src="{{this.cover}}" class="card-img-top" style="width:200px;" alt="...">
+      
+      <div class="card-body">
+      <a href="/movies/{{this._id}}"><h5>{{this.title}}"</h5></a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col">
+    <div class="cardlist">
+      <img src="{{this.cover}}" class="card-img-top" style="width:200px;" alt="...">
+      
+      <div class="card-body">
+      <a href="/movies/{{this._id}}"><h5>{{this.title}}"</h5></a>
+      </div>
+    </div>
+  </div>
+
+
+
+   {{/each}}
+
+
+   
 </div>
