@@ -71,7 +71,7 @@ router.get("/movies/:id/edit", (req, res, next) =>{
     const {id} = req.params;
     
 
-    MovieModel.findById(id).populate("user")
+    MovieModel.findById(id)
     .then((movie) => {
       
         res.render("movies/edit-movie.hbs", {
@@ -80,7 +80,7 @@ router.get("/movies/:id/edit", (req, res, next) =>{
     })
     .catch((err) => {
         next(err)
-    }) 
+    })
 });
 
 // POST edit movie
@@ -107,52 +107,12 @@ router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) =>
     })
 })
 
-
 // GET movies details
 router.get("/movies/:movieId", (req, res, next) => {
     const {movieId} = req.params
     // const userLoggedId = req.session.user._id;
     // const {owner} = req.body
-    MovieModel.findById(movieId)
-
-
-    .then((movie) => {
-        // movie.populate("owner").then ((ownerName)=>{ movieOwner: ownerName.owner})
-        // console.log(ownerName);
-        
-            const foundMovieByOwner = movie.owner.toString();
-            console.log(foundMovieByOwner);
-            const foundUserLoggedById = req.session.user._id;
-            console.log(foundUserLoggedById);
-
-            if (foundMovieByOwner === foundUserLoggedById){
-                req.app.locals.editMovieCreated = true;
-                console.log(req.app.locals.editMovieCreated)
-            } else {
-                req.app.locals.editMovieCreated = false;
-                console.log(req.app.locals.editMovieCreated)
-                // res.render("movies/movie-details.hbs", {
-                //     ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
-                // })
-                
-            }
-            const movieData = movie.populate("owner")
-            
-            
-            res.render("movies/movie-details.hbs", {
-                movieDetails: movie,
-                foundMovieByeOwner: movie.owner.toString(),
-                foundUserLoggedById: req.session.user._id,
-                movieOwner: movieData.owner
-                
-            })
-        })
-        .catch((err) => {
-        next(err)
-        })
-    
-    })
-
+    MovieModel.findById(movieId).populate("owner")
 
        
     // const foundMovie = MovieModel.findById(movieId)
@@ -162,8 +122,71 @@ router.get("/movies/:movieId", (req, res, next) => {
     // foundOwner = User.findById()  
     
     
-    
+    .then((movie) => {
 
+        const foundMovieByOwner = movie.owner._id.toString();
+        console.log(foundMovieByOwner);
+        const foundUserLoggedById = req.session.user._id;
+        console.log(foundUserLoggedById);
+
+        if (foundMovieByOwner === foundUserLoggedById){
+            req.app.locals.editMovieCreated = true;
+            console.log(req.app.locals.editMovieCreated)
+        } else {
+            req.app.locals.editMovieCreated = false;
+            console.log(req.app.locals.editMovieCreated)
+            // res.render("movies/movie-details.hbs", {
+            //     ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
+            // })
+            
+        }
+        
+        
+        
+        res.render("movies/movie-details.hbs", {
+            movieDetails: movie,
+            foundMovieByeOwner: movie.owner.toString(),
+            foundUserLoggedById: req.session.user._id,
+            movieOwner: movie.owner
+
+        // movie.populate("owner")
+        // .then ((movieData)=>{
+        //     console.log(movieData)
+        // res.render("movies/movie-details.hbs", {
+        //     movieOwner: movieData.owner
+        // })
+        // })
+        // console.log(ownerName);
+        
+        // const foundMovieByOwner = movie.owner._id.toString();
+        // console.log(foundMovieByOwner);
+        // const foundUserLoggedById = req.session.user._id;
+        // console.log(foundUserLoggedById);
+
+        // if (foundMovieByOwner === foundUserLoggedById){
+        //     req.app.locals.editMovieCreated = true;
+        //     console.log(req.app.locals.editMovieCreated)
+        // } else {
+        //     req.app.locals.editMovieCreated = false;
+        //     console.log(req.app.locals.editMovieCreated)
+        //     // res.render("movies/movie-details.hbs", {
+        //     //     ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
+        //     // })
+            
+        // }
+        
+        
+        // res.render("movies/movie-details.hbs", {
+        //     movieDetails: movie,
+        //     foundMovieByeOwner: movie.owner.toString(),
+        //     foundUserLoggedById: req.session.user._id,
+            
+        })
+    })
+    .catch((err) => {
+        next(err)
+    })
+})
 
 
 
