@@ -16,7 +16,7 @@
 <br>
 <p>Año: {{movieDetails.year}}</p>
 <br>
-{{movieDetails.owner}}
+{{!-- {{movieDetails.owner}} --}}
 
 
 
@@ -27,7 +27,11 @@
 <form action="/movies/{{movieDetails._id}}/delete" method="POST">
 <button>Borrar</button>
 {{else}}
-{{ownerMessage}}
+<p>Esta película ha sido creada por el usuario: "
+{{#each movieOwner}}
+{{this.username}}
+{{/each}}
+"</p>
 {{/if}}
 </form>
 
