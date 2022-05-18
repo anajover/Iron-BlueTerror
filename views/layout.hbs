@@ -35,18 +35,88 @@
             <IMG src="/images/logo3.png" border=0 width=250 height=132>
          </div>
      
-     <ul class="nav-links">
+     {{!-- <ul class="nav-links"> --}}
                 
        <!-- NAVIGATION MENUS -->
-       <div class="menu">
+       {{!-- <div class="menu">
           
          <li><a href="/">Home</a></li>
          <li><a href="/movies">Películas</a></li>
          <li><a href="/movies/list">Listado</a></li>
          <li><a href="/">About Us</a></li>
-                 
-       </div>
-     </ul>
+         <li><a href="/">Cerrar Sesión</a></li>
+        </div>
+     </ul> --}}
+
+
+
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/">Home</a>
+         </buttonMenu>
+
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/movies">Películas</a>
+         </buttonMenu>
+
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/movies/list">Listado</a>
+         </buttonMenu>
+
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/">Sobre nosotras</a>
+         </buttonMenu>
+        
+           
+
+ {{#if userIsActive}}
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/profile">Perfil</a>
+         </buttonMenu>
+
+
+         
+         <form action="/auth/logout" method="POST">
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>Cerrar Sesión
+         </button>
+         </form>
+         
+
+
+         {{else}}
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/auth/signup">Registrarse</a>
+         </buttonMenu>
+
+         <button class = "nav-btn">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span><a href="/auth/login">Iniciar sesión</a>
+         </buttonMenu>
+         {{/if}}                 
+     
    </nav>
 
       {{{body}}}

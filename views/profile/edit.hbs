@@ -1,1 +1,41 @@
 <h1>Editar Perfil</h1>
+
+<form action="/profile/edit" method="POST" enctype="multipart/form-data">
+
+<label for="username">Username: </label>
+<input type="text" name="username" value="{{foundUser.username}}">
+
+<br>
+<label for="email">Email: </label>
+<input type="email" name="email" value="{{foundUser.email}}">
+
+<br>
+<label for="name">Nombre: </label>
+<input type="text" name="name" value="{{foundUser.name}}">
+
+<br>
+<label for="city">Ciudad: </label>
+<input type="text" name="city" value="{{foundUser.city}}">
+
+<br>
+<label for="birthYear">Fecha de nacimiento: </label>
+<input type="date" name="birthYear" value="{{foundUser.birthYear}}">
+
+<br>
+<label for="aboutMe">Sobre mi: </label>
+<textarea name="aboutMe">{{foundUser.aboutMe}}</textarea>
+
+<br>
+<label for="image">Imagen de perfil: </label>
+<input type="file" name="image" value="{{foundUser.image}}">
+
+
+<br>
+<button type="submit">Actualizar Datos</button>
+
+</form>
+
+
+
+
+
