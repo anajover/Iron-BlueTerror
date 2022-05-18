@@ -50,62 +50,66 @@
 
 
 
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span><a href="/">Home</a>
          </buttonMenu>
 
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span><a href="/movies">Películas</a>
          </buttonMenu>
 
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span><a href="/movies/list">Listado</a>
          </buttonMenu>
 
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
-         <span></span><a href="/">About Us</a>
+         <span></span><a href="/">Sobre nosotras</a>
          </buttonMenu>
         
            
 
  {{#if userIsActive}}
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span><a href="/profile">Perfil</a>
          </buttonMenu>
 
+
+         
          <form action="/auth/logout" method="POST">
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span>Cerrar Sesión
-         </buttonMenu>
+         </button>
          </form>
+         
+
 
          {{else}}
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
          <span></span><a href="/auth/signup">Registrarse</a>
          </buttonMenu>
 
-         <buttonMenu>
+         <button class = "nav-btn">
          <span></span>
          <span></span>
          <span></span>
