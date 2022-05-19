@@ -29,7 +29,8 @@ app.use( ( req, res, next ) => {
     } else {
         res.locals.userIsActive = false;
     }
-})
+    next()
+}) 
 
 
 // 👇 Start handling routes here
