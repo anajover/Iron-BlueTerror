@@ -7,6 +7,7 @@ const fileUploader = require("../middlewares/uploader.js");
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
 const { response } = require("express");
 const res = require("express/lib/response");
+const { find } = require("../models/User.model.js");
 // const res = require("express/lib/response");
 
 
@@ -226,6 +227,54 @@ router.post("/movies/:id/delete", async (req, res, next) => {
 })
 
 //GET list de peliculas creadas por el usuario
+router.get("/movies/:userId/createdList", (req, res, next) => {
+    const userId = req.session.user._id;
+    const {owner} = req.body;
+    
+
+
+
+    MovieModel.find({owner: userId}).select("title")
+    .then((title) => {
+        console.log("Necesito probar estoooo: " + owner)
+        console.log(title)
+        res.render("profile/ownerlist.hbs", {
+            createdMovies: title
+        })
+        
+    }).catch((err) => {
+        next(err)
+    })
+
+})
+
+
+// router.get("/movies/createdList", (req, res, next) => {
+//     const {id} = req.params
+    
+//     MovieModel.findById(id).populate(owner)
+
+//     .then((movie) => {
+
+//         res.render("profile/ownerlist.hbs", {
+//             movieData
+//         })
+//     })
+        
+//     req.session.user.populate(owner).toString()
+
+//         res.render("profile/ownerlist.hbs", {
+//             ownerData: owner
+//         })
+
+//     // MovieModel.findById((id), (req, res, next) => {
+//     //     console.log("El ultimo onwer: " + owner)
+//     //     console.log ("Ultimo ID: " + id)
+//         // if (id === re
+            
+//             // {{each owner}})
+//             // this.title
+//     })
 // GET movies details
 // router.get("/movies/:movieId", (req, res, next) => {
 //     const {movieId} = req.params
