@@ -106,9 +106,9 @@ router.post("/favorites/:movieId", async (req, res, next) => {
         const addFavorites = await User.findByIdAndUpdate(id, { $addToSet: {favorites: movieId} })
         console.log("Esto es addFavorites: " + addFavorites)
         console.log("Esto es el moviId: " + movieId)
-        if (addFavorites.nModified === 0) {
+        
             await User.findByIdAndUpdate(id, {$pull: {favorites: movieId}})
-        }
+  
 
         // if (addFavorites.nModified === 0) {
         //     await User.findAndUpdate({}, {$pull: {favorites: movieId}}, {multi: true});
@@ -126,6 +126,22 @@ router.post("/favorites/:movieId", async (req, res, next) => {
     
         
     })
+
+    // // GET Visualizar lista de favoritos
+    // router.get("/favorites", isLoggedIn, (req, res, next) => {
+    //     const {id} = req.params;
+
+    //     User.foundById(id).populate(favorite)
+    //     .then((favorite) => {
+    //         res.render("profile/favorites.hbs", {
+    //             favoritesList: favorite
+    //         })
+    //     }).catch((err) => {
+    //         next(err)
+    //     })
+    // })
+
+    // Get listar las películas creadas por un usuario
 
 
 

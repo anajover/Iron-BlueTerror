@@ -220,6 +220,20 @@ router.post("/movies/:id/delete", async (req, res, next) => {
     // })
 })
 
+router.get("/profile/createdByUser", (req, res, next) => {
+    const id = req.session.user._id
+    
+    User.findById(id).populate("owner")
+
+    .then((movie) => {
+        console.log(movie)
+
+        res.render("/profile/ownerlist.hbs", {
+            movieDetails: movie,
+        })
+    })
+})
+
 
 
 
