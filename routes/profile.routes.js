@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model.js");
+const MovieModel = require("../models/Movie.model.js");
 fileUploader = require("../middlewares/uploader.js")
 
 
@@ -62,7 +63,7 @@ try {
 // POST edicion de Profile
 router.post("/edit", isLoggedIn, fileUploader.single("image"),(req, res, next) => {
     console.log("Hola, esto es:" + req.file)
-    const {image, username, email, name, city, birthYear, aboutMe} = req.body;
+    const {username, email, name, city, birthYear, aboutMe} = req.body;
     const id =req.session.user._id;
     
     User.findByIdAndUpdate(id, {
@@ -80,13 +81,54 @@ router.post("/edit", isLoggedIn, fileUploader.single("image"),(req, res, next) =
     })
 });
 
+// POST crear añadir a favoritos
+router.post("/favorites/:movieId", async (req, res, next) => {
+    // const {favorites} = req.body;
+        const {movieId} = req.params;
+        const id = req.session.user._id;
+        console.log("Esto es el ID del usuario: " + id)
+        
+
+    // const foundUser = await User.findById(id).populate("")
+    // console.log("Esto es el foundUser: " + foundUser.movies._id)
+    // .then((user) => {
+    //     console.log(user)
+    //     const foundMovieId = user.favorites._id.toString();
+    //     console.log(foundMovieId)
+    // })
+    
+    
+
+    try {
+
+        
+
+        const addFavorites = await User.findByIdAndUpdate(id, { $addToSet: {favorites: movieId} })
+        console.log("Esto es addFavorites: " + addFavorites)
+        console.log("Esto es el moviId: " + movieId)
+        if (addFavorites.nModified === 0) {
+            await User.findByIdAndUpdate(id, {$pull: {favorites: movieId}})
+        }
+
+        // if (addFavorites.nModified === 0) {
+        //     await User.findAndUpdate({}, {$pull: {favorites: movieId}}, {multi: true});
+        // }
+        // if(!favorites.includes(movieId)) {
+        //     await User.findAndUpdate({}, {$pull: {favorites: movieId}}, {multi: true});
+        // }
+
+        res.render("profile/favorites.hbs");
+    }
+    catch(err) {
+        (err)
+    }
+    
+    
+        
+    })
 
 
 
-
-
-
-
-
+    
 module.exports = router;
 
