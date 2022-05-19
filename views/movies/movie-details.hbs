@@ -1,28 +1,32 @@
-<h1>Detalles de la Película</h1>
+{{!-- <h1>Detalles de la Película</h1> --}}
 
+<div class="fichaDetalles">
 
-<img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px">
+    
+
+<img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
 {{#if userIsActive}}
-<br>
-<button>Favoritos</button>
+
+   
+<aside>  
+
 {{/if}}
 <br>
-<p>{{movieDetails.title}}</p>
+<h2>{{movieDetails.title}}</h2>
 <br>
-<p>Director: {{movieDetails.director}}</p>
+<h5>Director:</h5> <p>{{movieDetails.director}}</p>
 <br>
-<p>Reparto:</p>
+<h5>Reparto:</h5>
 {{#each movieDetails.cast}}
-<ul>{{this}}</ul>
+<p>{{this}}</p>
 {{/each}}
 <br>
-<p>Argumento:</p>
-<ul>{{movieDetails.plot}}</ul>
+<h5>Argumento:</h5>
+<p>{{movieDetails.plot}}</p>
 <br>
-<p>Año: {{movieDetails.year}}</p>
+<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p></aside>
 <br>
 {{!-- {{movieDetails.owner}} --}}
-
 
 
 
@@ -37,6 +41,12 @@
 {{this.username}}
 {{/each}}
 "</p>
+
 {{/if}}
+<button>Favoritos</button>
+
 </form>
+ 
+</div>
+
 
