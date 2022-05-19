@@ -23,6 +23,14 @@ const capitalized = require("./utils/capitalized");
 const projectName = "Iron-BlueTerror";
 
 app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+app.use( ( req, res, next ) => {
+    if (req.session.user ){
+        res.locals.userIsActive = true;
+    } else {
+        res.locals.userIsActive = false;
+    }
+})
+
 
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");

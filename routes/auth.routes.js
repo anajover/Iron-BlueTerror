@@ -96,11 +96,12 @@ router.post("/login", async (req, res, next) => {
         }
 
         // Create an active session
+        //espera a que la sesión este correctamente guardada y después redirige
         req.session.user = foundUser;
-
-        req.app.locals.userIsActive = true;
-
-        res.redirect("/profile")
+        req.session.save(() => {
+            res.redirect("/profile")
+        })
+        
     } catch(err) {
         next(err)
     }
@@ -108,11 +109,12 @@ router.post("/login", async (req, res, next) => {
 
 // POST close the session
 router.post("/logout", (req, res, next) => {
+    //espera a que la sesión este correctamente destruida y después redirige
+    req.session.destroy(() => {
+        res.redirect("/")
+    })
 
-    req.session.destroy()
-    req.app.locals.userIsActive = false;
-
-    res.redirect("/")
+   
 })
 
 
