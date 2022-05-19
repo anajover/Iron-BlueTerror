@@ -133,7 +133,7 @@ router.get("/movies/:movieId", (req, res, next) => {
          
      
 
-            if (req.app.locals.userIsActive === true) {
+            // if (req.app.locals.userIsActive === true) {
 
                 const foundUserLoggedById = req.session.user._id;
                 console.log(foundUserLoggedById);
@@ -148,7 +148,7 @@ router.get("/movies/:movieId", (req, res, next) => {
                 //     ownerMessage: `Película creada por ${foundMovieByOwner.username}`,
                 // })
             }
-        } 
+        // } 
        
         
         
@@ -220,6 +220,7 @@ router.post("/movies/:id/delete", async (req, res, next) => {
     // })
 })
 
+//GET list de peliculas creadas por el usuario
 router.get("/profile/createdByUser", (req, res, next) => {
     const id = req.session.user._id
     
@@ -229,7 +230,7 @@ router.get("/profile/createdByUser", (req, res, next) => {
         console.log(movie)
 
         res.render("/profile/ownerlist.hbs", {
-            movieDetails: movie,
+            listOfMoviesCreated: movie,
         })
     })
 })
