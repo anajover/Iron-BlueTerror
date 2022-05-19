@@ -1,29 +1,36 @@
 <h1>Crea una nueva peli</h1>
 
-<form action="/movies/create" method="POST" enctype="multipart/form-data">
+<div class="fichaCrearPeli">
 
-<div>
+    <form action="/movies/create" method="POST" enctype="multipart/form-data">
 
-<label for="cover">Portada:</label>
-<input type="file" name="cover">
-<br>
-<label for="title">Título:</label>
-<input type="text" name="title">
-<br>
-<label for="director">Director:</label>
-<input type="text" name="director">
-<br>
-<label for="cast">Reparto:</label>
-<textarea name="cast" rows="8" cols="33"></textarea> 
-<br>
-<label for="plot">Argumento:</label>
-<textarea name="plot" rows="8" cols="33"></textarea> 
-<br>
-<label for="year">Año de estreno:</label>
-<input type="number" name="year">
-<br>
+    
+
+        <h5><label for="cover">Portada:</label></h5>
+        <p><input type="file" name="cover"></p>
+        
+        <h5><label for="title">Título:</label></h5>
+        <p><input type="text" name="title"></p>
+        
+        <h5><label for="director">Director:</label></h5>
+        <p><input type="text" name="director"></p>
+        
+        <h5><label for="cast">Reparto:</label></h5>
+        <p><textarea name="cast" rows="8" cols="33"></textarea> </p>
+        
+        <h5><label for="plot">Argumento:</label></h5>
+        <p><textarea name="plot" rows="8" cols="33"></textarea> </p>
+        
+        <h5><label for="year">Año de estreno:</label></h5>
+        <p><input type="number" name="year"></p>
+
+
+        
+        <div class = "botonCrearPeli">
+            <button type="submit" class="btnCrearPeli">Añadir.Película</button>
+        </div>
+
+    </form>
+
+
 </div>
-<br>
-<button type="submit">Añadir Película</button>
-
-</form>

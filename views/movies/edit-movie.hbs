@@ -1,51 +1,60 @@
 <h1>Editar Película</h1>
 
-<form action="/movies/{{editMovie._id}}/edit" method="POST" enctype="multipart/form-data">
+<div class="editarPelícula">
 
-<label for="title">Title: </label>
-<input type="text" name="title" value="{{editMovie.title}}">
+    <form action="/movies/{{editMovie._id}}/edit" method="POST" enctype="multipart/form-data">
 
-<br>
-<label for="director">Director: </label>
-<input type="text" name="director" value="{{editMovie.director}}">
+        <h5><label for="title">Title: </label></h5>
+        <p><input type="text" name="title" value="{{editMovie.title}}"></p>
 
-<br>
-<label for="cast"> Reparto: </label>
-{{!-- <select name="cast" multiple="true">
-    {{#each allCast}}
-    <option value="{{this.id}}">{{this.name}}</option>
+     
+        <h5><label for="director">Director: </label></h5>
+        <p><input type="text" name="director" value="{{editMovie.director}}"></p>
 
-    {{/each}}
-</select> --}}
-<input type="text" name="cast" value="{{editMovie.cast}}">
+        
+        <h5><label for="cast"> Reparto: </label></h5>
+        {{!-- <select name="cast" multiple="true">
+            {{#each allCast}}
+            <option value="{{this.id}}">{{this.name}}</option>
 
-<br>
-<label for="plot">Argumento: </label>
-<textarea name="plot">{{editMovie.plot}}</textarea>
+            {{/each}}
+        </select> --}}
+        <p><input type="text" name="cast" value="{{editMovie.cast}}"></p>
 
-<br>
-<label for="year">Año: </label>
-<input type="number" name="year" value="{{editMovie.year}}">
+        
+        <h5><label for="plot">Argumento: </label></h5>
+        <p><textarea name="plot">{{editMovie.plot}}</textarea></p>
 
-<br>
-<label for="cover">Carátula: 
-    <input type="file" name="cover">
-    <input type="text" name="existingImage" hidden value="{{editMovie.cover}}">
-</label>
+        
+        <h5><label for="year">Año: </label></h5>
+        <p><input type="number" name="year" value="{{editMovie.year}}"></p>
 
-
-    
-
-
-<br>
-<button type="submit">Actualizar</button>
-
-</form>
-
-<form action="/movies/{{editMovie._id}}/delete" method="POST">
-<button>Eliminar</button>
-</form>
+        
+        <h5><label for="cover">Carátula: </h5>
+           <p><input type="file" name="cover">
+           <p><input type="text" name="existingImage" hidden value="{{editMovie.cover}}"></p></p>
+        </label>
 
 
+            
+
+        <div class = "contenedorDet">
+        
+            <button type="submit"  class="btnDeta">Actualizar</button>
+        
+    </form>
+        
+        
+
+            <form action="/movies/{{editMovie._id}}/delete" method="POST">
+
+                <button class="btnDeta">Eliminar</button>
+
+            </form>
+        
+        
+        </div>
+        
+</div>
 
     

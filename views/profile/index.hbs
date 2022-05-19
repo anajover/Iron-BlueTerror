@@ -1,4 +1,4 @@
-<h1>Perfil de usuario</h1>
+<h1>Tu perfil de usuario</h1>
 
 {{!-- <img src = "{{profile.image}}" alt = "imagen de perfil" style="height:300px">
 <p>Usuario: {{userProfile.username}}</p>
@@ -8,25 +8,57 @@
 <p>Fecha de nacimiento: {{profile.birthYear}}</p>
 <p>Acerca de mí: {{profile.aboutMe}}</p> --}}
 
-<img src="{{foundUser.image}}" alt = "Imagen de perfil" style="height:200px">
-<p>Usuario: {{foundUser.username}}</p>
-<p>Email: {{foundUser.email}}</p>
-<p>Nombre: {{foundUser.name}}</p>
-<p>Ciudad: {{foundUser.city}}</p>
-<p>Fecha de nacimiento: {{foundUser.birthYear}}</p>
-<p>Acerca de mi: {{foundUser.aboutMe}}</p>
-
-{{!-- MODIFICAR --}}
-
-
-
-<button><a href="/profile/edit">Editar</a></button>
-
-<br>
-<button><a href="/movies/create/">Crear película</button>
 
 
 
 
-<br>
-<button type="submit"><a href="/movies/createdMovies/">Lista de películas creadas</a></button>
+<div class="fichaPerfil">
+
+    
+
+        <img src="{{foundUser.image}}" alt = "Imagen de perfil" style="height:200px" class="imgPerfil">
+        <br>
+        <br>
+
+        <h5>Usuario:</h5> <p>{{foundUser.username}}</p>
+        <h5>Email:</h5> <p>{{foundUser.email}}</p>
+        <h5>Nombre:</h5> <p>{{foundUser.name}}</p>
+        <h5>Ciudad:</h5> <p>{{foundUser.city}}</p>
+        <h5>Fecha de nacimiento:</h5> <p>{{foundUser.birthYear}}</p>
+        <h5>Acerca de mi:</h5> <p>{{foundUser.aboutMe}}</p>
+
+    
+
+
+
+
+
+
+
+        {{!-- MODIFICAR --}}
+
+        <div class = "contenedorDet">
+
+
+            <div class = "botonEditar">
+
+                <button class="btnDetaPerfil"><a href="/profile/edit">Editar</a></button>
+
+            </div>
+
+
+            <div class = "botonCrear">
+
+                <button class="btnDetaPerfil"><a href="/movies/create/">Crear.película</button>
+
+            </div>
+
+
+            {{!-- <br>
+        <button type="submit"><a href="/movies/createdMovies/">Lista de películas creadas</a></button> --}}
+
+
+    </div>
+
+
+</div>

@@ -35,48 +35,59 @@
 <div class = "contenedorDet">
 
 
-    <div class = "botonEditar">
-    {{#if editMovieCreated}}
-    <button class="btnDeta"><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
-    </div>
+            <div class = "botonEditar">
+
+                {{#if editMovieCreated}}
+
+                <button class="btnDeta"><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
+            </div>
 
 
 
-    <form action="/movies/{{movieDetails._id}}/delete" method="POST"></form>
-    {{!-- <button>Borrar</button> --}}
-    <div class = "botonBorrar">
-        <button class="btnDeta">Borrar</button>
-    </form>
-    </div>
-
-    </div>
-
-
-{{else}}
-<p>Esta película ha sido creada por el usuario: "
-{{#each movieOwner}}
-{{this.username}}
-{{/each}}
-"</p>
-
-{{/if}}
-
-<form action="/profile/favorites/{{movieDetails._id}}" method="POST">
-<button>Favoritos</button>
-</form>
-
-</form>
+        <form action="/movies/{{movieDetails._id}}/delete" method="POST">
+        {{!-- <button>Borrar</button> --}}
+            <div class = "botonBorrar">
+                
+                <button class="btnDeta">Borrar</button>
+            
+            </div>
+        </form>
 
 
-{{!-- MODIFICARRRRR!!!!! --}}
-{{!-- <iframe id="inlineFrameExample"
-    title="Inline Frame Example"
-    width="200"
-    height="200"
-    src="https://www.youtube.com/embed/ZwKhufmMxko">
 
-</iframe> --}}
- 
+        <form action="/profile/favorites/{{movieDetails._id}}" method="POST">
+            <div class = "botonFavoritos">
+                <button class="btnDeta">Favoritos</button>
+            </div>
+        </form>
+
+
+    
+
+
+
+
+    
+
+    {{else}}
+<p>Esta película ha sido creada por el usuario: " {{#each movieOwner}} {{this.username}} {{/each}}"</p>
+    {{/if}}
+
+
+
+
+
+            {{!-- MODIFICARRRRR!!!!! --}} 
+
+
+             {{!-- <iframe id="inlineFrameExample"
+                title="Inline Frame Example"
+                width="200"
+                height="200"
+                src="https://www.youtube.com/embed/ZwKhufmMxko">
+                
+            </iframe> --}}
+                
 </div>
 
 

@@ -1,41 +1,48 @@
-<h1>Editar Perfil</h1>
+<h1>Edita tu perfil</h1>
 
-<form action="/profile/edit" method="POST" enctype="multipart/form-data">
+    <div class="fichaEditarPerfil">
 
-<label for="username">Username: </label>
-<input type="text" name="username" value="{{foundUser.username}}">
+        <form action="/profile/edit" method="POST" enctype="multipart/form-data">
 
-<br>
-<label for="email">Email: </label>
-<input type="email" name="email" value="{{foundUser.email}}">
+            <h5><label for="username">Username: </label></h5>
+            <p><input type="text" name="username" value="{{foundUser.username}}"></p>
 
-<br>
-<label for="name">Nombre: </label>
-<input type="text" name="name" value="{{foundUser.name}}">
+            
+            <h5><label for="email">Email: </label></h5>
+            <p><input type="email" name="email" value="{{foundUser.email}}"></p>
 
-<br>
-<label for="city">Ciudad: </label>
-<input type="text" name="city" value="{{foundUser.city}}">
+           
+            <h5><label for="name">Nombre: </label></h5>
+            <p><input type="text" name="name" value="{{foundUser.name}}"></p>
 
-<br>
-<label for="birthYear">Fecha de nacimiento: </label>
-<input type="date" name="birthYear" value="{{foundUser.birthYear}}">
+            
+            <h5><label for="city">Ciudad: </label></h5>
+            <p><input type="text" name="city" value="{{foundUser.city}}"></p>
 
-<br>
-<label for="aboutMe">Sobre mi: </label>
-<textarea name="aboutMe">{{foundUser.aboutMe}}</textarea>
+            
+            <h5><label for="birthYear">Fecha de nacimiento: </label></h5>
+            <p><input type="date" name="birthYear" value="{{foundUser.birthYear}}"></p>
 
-<br>
-<label for="image">Imagen de perfil: </label>
-<input type="file" name="image" value="{{foundUser.image}}">
+            
+            <h5><label for="aboutMe">Sobre mi: </label></h5>
+            <p><textarea name="aboutMe">{{foundUser.aboutMe}}</textarea></p>
 
-
-<br>
-<button type="submit">Actualizar Datos</button>
-
-</form>
+           
+            <h5><label for="image">Imagen de perfil: </label></h5>
+            <p><input type="file" name="image" value="{{foundUser.image}}"></p>
 
 
+            
+            <div class = "contenedorDet">
 
+                <button type="submit" class="btnDetaPerfil">Actualizar Datos</button>
+            
+            </div>
+
+
+        </form>
+
+
+    </div>
 
 
