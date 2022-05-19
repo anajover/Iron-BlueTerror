@@ -143,6 +143,10 @@ router.post("/favorites/:movieId", async (req, res, next) => {
 
     // Get listar las películas creadas por un usuario
 
+    // GET Ver About US
+    router.get("/aboutus/", (req, res, next) => {
+        res.render("carousel-12/index.hbs")
+    })
 
 
     

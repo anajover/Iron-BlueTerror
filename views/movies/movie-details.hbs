@@ -3,7 +3,7 @@
 <div class="fichaDetalles">
 
 
-<aside>
+
 <img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
 {{#if userIsActive}}
 <br>
@@ -22,9 +22,7 @@
 <h5>Argumento:</h5>
 <p>{{movieDetails.plot}}</p>
 <br>
-<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p>
-
-</aside>
+<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p></aside>
 <br>
 {{!-- {{movieDetails.owner}} --}}
 
@@ -34,14 +32,7 @@
 <button><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
 
 <form action="/movies/{{movieDetails._id}}/delete" method="POST">
-{{!-- <button>Borrar</button> --}}
-
-<div>
-    <button class="btnDeta">Borrar</button>
-</div>
-
-
-
+<button>Borrar</button>
 </form>
 {{else}}
 <p>Esta película ha sido creada por el usuario: "
@@ -52,10 +43,18 @@
 
 {{/if}}
 
-<form action="/profile/favorites/{{movieDetails._id}}" method="POST">
-<button>Favoritos</button>
-</form>
 
+
+
+<form action="/profile/favorites/{{movieDetails._id}}" method="POST"></form>
+<input type="checkbox" checked="checked" id="favorite" name="favorite-checkbox" value="favorite-button">
+<label for="favorite" class="container">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+  <div class="action">
+    <button class="option-1 fav-btn">Add to Favorites</button>
+    <button class="option-2 fav-btn">Added to Favorites</button>
+  </div>
+</label>
 </form>
 
 
