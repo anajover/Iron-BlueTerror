@@ -17,9 +17,9 @@ a {
   text-decoration: none;
 }
 
-h1 {
+/* h1 {
   color: 15px;
-}
+} */
 
 li {
   list-style: none;
@@ -144,71 +144,6 @@ li {
   transition-delay: none;
  }
  
-
- /* NAVBAR BOTONES MENU */
- /* .menu {
-  display: flex;
-  gap: 1em;
-  font-size: 15px;
- }
- .menu li:hover { */
-  /* ¡¡¡YA COMENTADO!!! background-color: #207db8;
-  border-radius: 5px;
-  transition: 0.3s ease;  ¡¡¡¡YA COMENTADO!!!!*/
-  /* --glow-color: rgb(217, 176, 255);
-  --glow-spread-color: rgba(191, 123, 255, 0.781);
-  --enhanced-glow-color: rgb(231, 206, 255);
-  --btn-color: rgb(100, 61, 136);
-  border: .25em solid var(--glow-color);
-  padding: 1em 3em;
-  color: var(--glow-color);
-  font-size: 15px;
-  font-weight: bold;
-  background-color: var(--btn-color);
-  border-radius: 1em;
-  outline: none;
-  box-shadow: 0 0 1em .25em var(--glow-color),
-         0 0 4em 1em var(--glow-spread-color),
-         inset 0 0 .75em .25em var(--glow-color);
-  text-shadow: 0 0 .5em var(--glow-color);
-  position: relative;
-  transition: all 0.3s;
- }
- 
- button::after {
-  pointer-events: none;
-  content: "";
-  position: absolute;
-  top: 120%;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: var(--glow-spread-color);
-  filter: blur(2em);
-  opacity: .7;
-  transform: perspective(1.5em) rotateX(35deg) scale(1, .6);
- }
- 
- button:hover {
-  color: var(--btn-color);
-  background-color: var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-         0 0 4em 2em var(--glow-spread-color),
-         inset 0 0 .75em .25em var(--glow-color);
- }
- 
- button:active {
-  box-shadow: 0 0 0.6em .25em var(--glow-color),
-         0 0 2.5em 2em var(--glow-spread-color),
-         inset 0 0 .5em .25em var(--glow-color);
-  
- }
- .menu li {
-  padding: 5px 14px;
- } */
- 
-
-
 /* STYLE CAROUSEL */
 .carousel-indicators .active {
   background-color: #ff003c;
@@ -409,10 +344,6 @@ padding: 15px;
  }
 
 
-
-
- 
-
  /* STYLE FORM INPUT */
 
  *{box-sizing:border-box;}
@@ -442,18 +373,6 @@ padding: 15px;
 	display:inline-block;
 }
 
-/* form input[type="submit"]{
-  
-	width:100%;
-	padding:20px 16px;
-	margin-top:32px;
-	border:1px solid #000;
-	border-radius:5px;
-	display:block;
-	color:#fff;
-	background-color:#000;
-}  */
-
 .login-btn {
 
   width:100%;
@@ -467,12 +386,10 @@ padding: 15px;
   
 }
 
-
 .formulario input[type="submit"]:hover{
 	cursor:pointer;
 }
 
-/* CARDS FROM MOVIES LIST */
 
 
 /* VIDEOS */
@@ -611,7 +528,7 @@ iframe {
 
 /* BOTONES DETALLES */
 .btnDeta {
-  position: relative;
+  position:relative;
   font-size: 10px;
   text-transform: uppercase;
   text-decoration: none;
@@ -622,22 +539,23 @@ iframe {
   border: none;
   font-family: inherit;
   font-weight: 800;
-  color: rgb(100, 6, 6);
+  color: rgb(205, 4, 14);
   background-color: white;
+  
+  
  }
  
  .btnDeta:hover {
-  transform: translateY(-3px);
+  transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
  }
  
  .btnDeta:active {
-  transform: translateY(-1px);
+  transform: translateY(-10px);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
  }
  
  .btnDeta::after {
-  content: "";
   display: inline-block;
   height: 100%;
   width: 100%;
@@ -657,3 +575,31 @@ iframe {
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
  }
+
+
+
+
+.contenedorDet{
+  display:flex; 
+  justify-content: center; 
+  align-items: center;
+ }
+
+.botonEditar{
+  height: 40px;
+  width: 50px;
+  margin: 10px;
+}
+
+.botonBorrar{
+  height: 40px;
+  width: 40px;
+  margin: 50px;
+}
+
+.botonFavoritos{
+  height: 40px;
+  width: 40px;
+  margin: 50px;
+}
+ 

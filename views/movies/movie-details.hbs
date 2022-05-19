@@ -29,20 +29,29 @@
 {{!-- {{movieDetails.owner}} --}}
 
 
-
-{{#if editMovieCreated}}
-<button><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
-
-<form action="/movies/{{movieDetails._id}}/delete" method="POST">
-{{!-- <button>Borrar</button> --}}
-
-<div>
-    <button class="btnDeta">Borrar</button>
-</div>
+{{!-- BOTONES --}}
 
 
+<div class = "contenedorDet">
 
-</form>
+
+    <div class = "botonEditar">
+    {{#if editMovieCreated}}
+    <button class="btnDeta"><a href="/movies/{{movieDetails._id}}/edit">Editar</a></button>
+    </div>
+
+
+
+    <form action="/movies/{{movieDetails._id}}/delete" method="POST"></form>
+    {{!-- <button>Borrar</button> --}}
+    <div class = "botonBorrar">
+        <button class="btnDeta">Borrar</button>
+    </form>
+    </div>
+
+    </div>
+
+
 {{else}}
 <p>Esta película ha sido creada por el usuario: "
 {{#each movieOwner}}
