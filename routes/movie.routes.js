@@ -55,7 +55,8 @@ router.post("/movies/create", isLoggedIn, fileUploader.single("cover"), (req, re
         cast,
         plot,
         year,
-        owner : ownerId
+        owner : ownerId,
+
     })
     .then((movie) => {
         res.redirect("/movies/list");
@@ -110,6 +111,7 @@ router.post("/movies/:id/edit", fileUploader.single("cover"),(req, res, next) =>
 // GET movies details
 router.get("/movies/:movieId", (req, res, next) => {
     const {movieId} = req.params
+    req.app.locals.idOfTheMovie = movieId;
     // const userLoggedId = req.session.user._id;
     // const {owner} = req.body
     MovieModel.findById(movieId).populate("owner")
@@ -128,6 +130,7 @@ router.get("/movies/:movieId", (req, res, next) => {
 
         const foundMovieByOwner = movie.owner._id.toString();
         console.log(foundMovieByOwner);
+         
      
 
             if (req.app.locals.userIsActive === true) {
@@ -194,6 +197,7 @@ router.get("/movies/:movieId", (req, res, next) => {
         next(err)
     })
 })
+  
 
 
 
@@ -216,7 +220,7 @@ router.post("/movies/:id/delete", async (req, res, next) => {
     // })
 })
 
-//POST coincidan usuario y pelicula creada
+
 
 
 module.exports = router;

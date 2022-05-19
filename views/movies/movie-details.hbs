@@ -2,13 +2,11 @@
 
 <div class="fichaDetalles">
 
-    
+
 
 <img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
 {{#if userIsActive}}
-
-   
-<aside>  
+<br>
 
 {{/if}}
 <br>
@@ -35,6 +33,7 @@
 
 <form action="/movies/{{movieDetails._id}}/delete" method="POST">
 <button>Borrar</button>
+</form>
 {{else}}
 <p>Esta película ha sido creada por el usuario: "
 {{#each movieOwner}}
@@ -43,9 +42,22 @@
 "</p>
 
 {{/if}}
+
+<form action="/profile/favorites/{{movieDetails._id}}" method="POST">
 <button>Favoritos</button>
+</form>
 
 </form>
+
+
+{{!-- MODIFICARRRRR!!!!! --}}
+{{!-- <iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="200"
+    height="200"
+    src="https://www.youtube.com/embed/ZwKhufmMxko">
+
+</iframe> --}}
  
 </div>
 
