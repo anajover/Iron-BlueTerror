@@ -28,8 +28,7 @@ const userSchema = new Schema({
   favorites: {
     type: [Schema.Types.ObjectId],
     ref: "Movie"
-  },
-  moviesCreated: [String]
+  }
 });
 
 const User = model("User", userSchema);

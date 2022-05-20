@@ -130,12 +130,18 @@ router.post("/favorites/:movieId", async (req, res, next) => {
 
     // GET Visualizar lista de favoritos
     router.get("/favorites", isLoggedIn, (req, res, next) => {
-        const {id} = req.params;
+        const {favorites} = req.body;
+        
 
-        User.findById(id).populate(favorites)
+
+        User.find().populate("favorites")
         .then((user) => {
+            
+
+            console.log(user)
+            
             res.render("profile/favorites.hbs", {
-            favoritesList: user.favorites
+            favoritesList: user
             })
         }).catch((err) => {
             next(err)
