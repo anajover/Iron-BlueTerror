@@ -1,4 +1,12 @@
-<h>Peliculas creadas por ti</h>
-{{#each createdMovies}}
-<li><a href ="/movies/{{this.id}}/">{{ this.title}}</a></li>
-{{/each}}
+
+
+<div class="listadoDePeliculas">
+
+    <h2>Peliculas creadas por ti</h2>
+    <br>
+    <br>
+    <h6>{{#each createdMovies}}
+    <li><a href ="/movies/{{this.id}}/">{{ this.title}}</a></li>
+    {{/each}}</h6>
+
+</div>

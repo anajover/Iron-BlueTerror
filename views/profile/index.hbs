@@ -57,12 +57,13 @@
             {{!-- <br>
         <button type="submit"><a href="/movies/createdMovies/">Lista de películas creadas</a></button> --}}
 
-        
-            <button type="submit"><a href="/movies/{{foundUser._id}}/createdList/">Lista de películas creadas</a></button>
+            <div class = "botonCrear">
+            <button type="submit" class="btnDetaPerfil"><a href="/movies/{{foundUser._id}}/createdList/">Tus.películas</a></button>
+            </div>
 
-           
-            <button type="submit"><a href="/profile/favorites/">Lista de Favoritos</a></button>
-
+            <div class = "botonCrear">
+            <button type="submit" class="btnDetaPerfil"><a href="/profile/favorites/">Favoritos</a></button>
+            </div>
 
     </div>
 
