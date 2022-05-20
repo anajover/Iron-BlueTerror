@@ -3,7 +3,7 @@
 <div class="fichaDetalles">
 
 
-<aside>
+
 <img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
 {{#if userIsActive}}
 <br>
@@ -22,9 +22,7 @@
 <h5>Argumento:</h5>
 <p>{{movieDetails.plot}}</p>
 <br>
-<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p>
-
-</aside>
+<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p></aside>
 <br>
 {{!-- {{movieDetails.owner}} --}}
 
@@ -62,8 +60,22 @@
         </form>
 
 
-    
+{{!--     
+        <form action="/movies/{{movieDetails._id}}/delete" method="POST">
+        <button>Borrar</button>
+        </form> --}}
+        {{!-- {{else}}
+        <p>Esta película ha sido creada por el usuario: "
+        {{#each movieOwner}}
+        {{this.username}}
+        {{/each}}
+        "</p>
 
+        {{/if}} --}}
+
+{{!-- <form action="/profile/favorites/{{movieDetails._id}}" method="POST">
+<button>Favoritos</button>
+</form> --}}
 
 
 

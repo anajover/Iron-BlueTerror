@@ -2,7 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
+ }
+
+ #image404 {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+ }
+
 
 body {
   padding: 1px;
@@ -385,12 +392,14 @@ li {
   visibility: visible;
 }
 
-h1 {
-  color: rgb(198, 197, 197);
-  text-shadow: 4px 4px 4px #333;
+
+  h1{
+  color:rgb(198, 197, 197);
+  text-shadow: 4px 4px 4px rgb(95, 95, 95);
   text-align: center;
   margin-top: 50px;
-}
+  margin-bottom: 50px;
+  }
 
 /* CARD LIST */
 .row {

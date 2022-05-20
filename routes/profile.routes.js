@@ -6,6 +6,7 @@ fileUploader = require("../middlewares/uploader.js")
 
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
 const async = require("hbs/lib/async");
+const { response } = require("../app.js");
 
 
 
@@ -127,6 +128,26 @@ router.post("/favorites/:movieId", async (req, res, next) => {
         
     })
 
+    // GET Visualizar lista de favoritos
+    router.get("/favorites", isLoggedIn, (req, res, next) => {
+        const {favorites} = req.body;
+        
+
+
+        User.find().populate("favorites")
+        .then((user) => {
+            
+
+            console.log(user)
+            
+            res.render("profile/favorites.hbs", {
+            favoritesList: user
+            })
+        }).catch((err) => {
+            next(err)
+        })
+    })
+
     // // GET Visualizar lista de favoritos
     // router.get("/favorites", isLoggedIn, (req, res, next) => {
     //     const {id} = req.params;
@@ -143,6 +164,10 @@ router.post("/favorites/:movieId", async (req, res, next) => {
 
     // Get listar las películas creadas por un usuario
 
+    // GET Ver About US
+    router.get("/aboutus/", (req, res, next) => {
+        res.render("carousel-12/index.hbs")
+    })
 
 
     

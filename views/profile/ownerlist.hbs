@@ -1,3 +1,4 @@
 <h>Peliculas creadas por ti</h>
-
-{{!-- {{movieByUser}} --}}
+{{#each createdMovies}}
+<li><a href ="/movies/{{this.id}}/">{{ this.title}}</a></li>
+{{/each}}
