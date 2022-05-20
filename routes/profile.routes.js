@@ -6,6 +6,7 @@ fileUploader = require("../middlewares/uploader.js")
 
 const isLoggedIn = require("../middlewares/isLoggedIn.js");
 const async = require("hbs/lib/async");
+const { response } = require("../app.js");
 
 
 
@@ -125,6 +126,20 @@ router.post("/favorites/:movieId", async (req, res, next) => {
     
     
         
+    })
+
+    // GET Visualizar lista de favoritos
+    router.get("/favorites", isLoggedIn, (req, res, next) => {
+        const {id} = req.params;
+
+        User.findById(id).populate(favorites)
+        .then((user) => {
+            res.render("profile/favorites.hbs", {
+            favoritesList: user.favorites
+            })
+        }).catch((err) => {
+            next(err)
+        })
     })
 
     // // GET Visualizar lista de favoritos
