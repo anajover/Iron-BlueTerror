@@ -4,33 +4,35 @@
 
 
 
-<img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
-{{#if userIsActive}}
-<br>
+    <img src="{{movieDetails.cover}}" alt="{{movieDetails.title}} Cover" style="height: 500px" class="imgDetalles">
+    {{#if userIsActive}}
+    <br>
 
-{{/if}}
-<br>
-<h2>{{movieDetails.title}}</h2>
-<br>
-<h5>Director:</h5> <p>{{movieDetails.director}}</p>
-<br>
-<h5>Reparto:</h5>
-{{#each movieDetails.cast}}
-<p>{{this}}</p>
-{{/each}}
-<br>
-<h5>Argumento:</h5>
-<p>{{movieDetails.plot}}</p>
-<br>
-<h5>Año:</aside></h5> <p>{{movieDetails.year}}</p></aside>
-<br>
-{{!-- {{movieDetails.owner}} --}}
-
-
-{{!-- BOTONES --}}
+    {{/if}}
+    <br>
+    <h2>{{movieDetails.title}}</h2>
+    <br>
+    <h5>Director:</h5> <p>{{movieDetails.director}}</p>
+    <br>
+    <h5>Reparto:</h5>
+    {{#each movieDetails.cast}}
+    <p>{{this}}</p>
+    {{/each}}
+    <br>
+    <h5>Argumento:</h5>
+    <p>{{movieDetails.plot}}</p>
+    <br>
+    <h5>Año:</h5> <p>{{movieDetails.year}}</p>
+    </aside>
+    
+    {{!-- {{movieDetails.owner}} --}}
 
 
-<div class = "contenedorDet">
+    {{!-- BOTONES --}}
+    
+
+
+    <div class = "contenedorDet">
 
 
             <div class = "botonEditar">
@@ -60,7 +62,7 @@
         </form>
 
 
-{{!--     
+        {{!--     
         <form action="/movies/{{movieDetails._id}}/delete" method="POST">
         <button>Borrar</button>
         </form> --}}
@@ -73,23 +75,11 @@
 
         {{/if}} --}}
 
-{{!-- <form action="/profile/favorites/{{movieDetails._id}}" method="POST">
-<button>Favoritos</button>
-</form> --}}
+        {{!-- <form action="/profile/favorites/{{movieDetails._id}}" method="POST">
+        <button>Favoritos</button>
+        </form> --}}
 
-
-
-    
-
-    {{else}}
-<p>Esta película ha sido creada por el usuario: " {{#each movieOwner}} {{this.username}} {{/each}}"</p>
-    {{/if}}
-
-
-
-
-
-            {{!-- MODIFICARRRRR!!!!! --}} 
+        {{!-- MODIFICARRRRR!!!!! --}} 
 
 
              {{!-- <iframe id="inlineFrameExample"
@@ -99,7 +89,22 @@
                 src="https://www.youtube.com/embed/ZwKhufmMxko">
                 
             </iframe> --}}
+
+
+
+
+            
                 
+    </div>
+
+
+    <div class = "owner">
+
+        {{else}}
+        <p>Esta película ha sido creada por el usuario: " {{#each movieOwner}} {{this.username}} {{/each}}"</p>
+        {{/if}}
+        
+    </div>
+
+
 </div>
-
-
